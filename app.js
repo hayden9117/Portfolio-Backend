@@ -1,42 +1,42 @@
-const express = require('express')
-const knex = require('knex')(require('./knexfile.js')['development'])
-const app = express()
-const port = process.env.PORT || 3001
+const express = require("express");
+const knex = require("knex")(require("./knexfile.js")["development"]);
+const app = express();
+const port = process.env.PORT || 3001;
 // const db = require('./db')
-const cors = require('cors')
-var users = require('./routes/users')
-var login = require('./routes/login')
-var addList = require('./routes/addlist')
-var getList = require('./routes/getlist')
-var deleteList = require('./routes/deletelist')
-require('dotenv').config()
+const cors = require("cors");
+var users = require("./routes/users");
+var login = require("./routes/login");
+var addList = require("./routes/addlist");
+var getList = require("./routes/getlist");
+var deleteList = require("./routes/deletelist");
+var AmazonData = require("./routes/AmazonData");
+require("dotenv").config();
 
 // SERVER
 app.listen(port, () => {
-  console.log(`Listening, localhost:${port}`)
-})
+  console.log(`Listening, localhost:${port}`);
+});
 
 // Middleware
 // app.use(cors({ origin: '', credentials: true }))
-app.use(cors({ origin: 'http://localhost:3002', credentials: true }))
-app.use(express.json())
-app.use('/newuser', users)
-app.use('/login', login)
-app.use('/addlist', addList)
-app.use('/getlist', getList)
-app.use('/deletelist', deleteList)
+app.use(cors({ origin: "http://localhost:3002", credentials: true }));
+app.use(express.json());
+app.use("/newuser", users);
+app.use("/login", login);
+app.use("/addlist", addList);
+app.use("/getlist", getList);
+app.use("/deletelist", deleteList);
+app.use("/AmazonData", AmazonData);
 // Routes
-app.get('/', (req, res) => {
-  res.send('heroku test server successful')
-
-})
+app.get("/", (req, res) => {
+  res.send("heroku test server successful");
+});
 
 // docker run --rm --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v ~/docker/volumes/postgres:/var/lib/postgresql/data postgres
 
 // app.post('/login', async (req, res) => {
 //   let userName = req.body.username
 //   let passWord = req.body.password
-
 
 //   knex
 //     .select('*')
@@ -60,36 +60,38 @@ app.get('/', (req, res) => {
 
 //   console.log(`user ${userName} pass ${passWord} result: $ ${result[0].password} `)
 
-
 // })
 
-app.get('/test', (req, res) => {
-  console.log('request records')
+app.get("/test", (req, res) => {
+  console.log("request records");
   knex
-    .select('*')
-    .from('accounts')
-    .orderBy('id')
-    .then(data => res.status(200).json(data))
-    .catch(err => {
+    .select("*")
+    .from("accounts")
+    .orderBy("id")
+    .then((data) => res.status(200).json(data))
+    .catch((err) => {
       res.status(404).json({
-        message: 'not found'
-      })
-    })
-})
+        message: "not found",
+      });
+    });
+});
 
-app.get('/testlist', (req, res) => {
-  console.log('request records')
+app.get("/testlist", (req, res) => {
+  console.log("request records");
   knex
-    .select('*')
-    .from('favoriteslist')
-    .orderBy('id')
-    .then(data => res.status(200).json(data))
-    .catch(err => {
-      res.status(404).json({
-        message: 'not found'
-      }, console.log(err.message))
-    })
-})
+    .select("*")
+    .from("favoriteslist")
+    .orderBy("id")
+    .then((data) => res.status(200).json(data))
+    .catch((err) => {
+      res.status(404).json(
+        {
+          message: "not found",
+        },
+        console.log(err.message)
+      );
+    });
+});
 // app.post('/newuser', (req, res) => {
 //   knex
 //     .select('*')
