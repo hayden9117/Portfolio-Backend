@@ -5,8 +5,8 @@ exports.seed = function (knex) {
     .then(function () {
       // Inserts seed entries
       return knex("Amazon").insert([
-        { itemname: "rowValue1", itemprice: "rowValue2" },
-        { itemname: "rowValue1", itemprice: "rowValue2" },
+        { url: "rowValue1", itemprice: "rowValue2" },
+        { url: "rowValue1", itemprice: "rowValue2" },
       ]);
     });
 };

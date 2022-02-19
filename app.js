@@ -10,6 +10,7 @@ var addList = require("./routes/addlist");
 var getList = require("./routes/getlist");
 var deleteList = require("./routes/deletelist");
 var AmazonData = require("./routes/AmazonData");
+var getAmazonData = require("./routes/getAmazonData");
 require("dotenv").config();
 
 // SERVER
@@ -27,6 +28,7 @@ app.use("/addlist", addList);
 app.use("/getlist", getList);
 app.use("/deletelist", deleteList);
 app.use("/AmazonData", AmazonData);
+app.use("/getAmazonData", getAmazonData);
 // Routes
 app.get("/", (req, res) => {
   res.send("heroku test server successful");
@@ -92,6 +94,41 @@ app.get("/testlist", (req, res) => {
       );
     });
 });
+/* GET users listing. */
+app.get("/amazonTest", function (req, res, next) {
+  console.log("request records");
+  knex
+    .select("*")
+    .from("Amazon")
+    .orderBy("id")
+    .then((data) => res.status(200).json(data))
+    .catch((err) => {
+      res.status(404).json(
+        {
+          message: "not found",
+        },
+        console.log(err.message)
+      );
+    });
+});
+
+/* GET users listing. */
+// router.get("/", function (req, res, next) {
+//   console.log("request records");
+//   knex
+//     .select("*")
+//     .from("Amazon")
+//     .orderBy("id")
+//     .then((data) => res.status(200).json(data))
+//     .catch((err) => {
+//       res.status(404).json(
+//         {
+//           message: "not found",
+//         },
+//         console.log(err.message)
+//       );
+//     });
+// });
 // app.post('/newuser', (req, res) => {
 //   knex
 //     .select('*')

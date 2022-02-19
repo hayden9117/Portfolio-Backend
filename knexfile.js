@@ -1,41 +1,37 @@
 // Update with your config settings.
-const connectionString = process.env.DATABASE_URL
-
+const connectionString = process.env.DATABASE_URL;
 
 module.exports = {
-
   development: {
-    client: 'pg',
-    connection: 'postgres://postgres:docker@localhost/'
+    client: "pg",
+    connection: "postgres://postgres:docker@localhost/",
+    migrations: { directory: "./migrations" },
+    seeds: { directory: "./seeds" },
   },
 
   staging: {
-    client: 'postgresql',
+    client: "postgresql",
     connection: {
-      database: 'my_db',
-      user: 'username',
-      password: 'password'
+      database: "my_db",
+      user: "username",
+      password: "password",
     },
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     migrations: {
-      tableName: 'knex_migrations'
-    }
+      tableName: "knex_migrations",
+    },
   },
 
   production: {
-    client: 'pg',
+    client: "pg",
     connection: {
       connectionString,
-      ssl: { rejectUnauthorized: false }
+      ssl: { rejectUnauthorized: false },
     },
-    migrations:
-      { directory: './migrations' },
-    seeds: { directory: './seeds' }
-
-
-  }
-
+    migrations: { directory: "./migrations" },
+    seeds: { directory: "./seeds" },
+  },
 };
