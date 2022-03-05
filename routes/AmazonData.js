@@ -16,26 +16,29 @@ router.post("/", function (req, res, next) {
 
     // parse the html text and extract titles
     const $ = cheerio.load(body);
-    const priceList = [];
 
     // using CSS selector
-    $(".a-price").each((i, price) => {
-      const priceNode = $(price);
-      const priceText = priceNode.text();
-
-      priceList.push(priceText);
-    });
+    const priceSing = $(".a-price");
+    const priceNode = $(priceSing);
+    const priceText = priceNode.text();
+    let newPrice = priceText.split("$");
 
     const titleNode = $(".a-size-large");
     const titleText = titleNode.text();
     console.log(titleText);
 
-    let price = priceList[0]
-      .split("")
-      .filter(function (item, pos, self) {
-        return self.indexOf(item) == pos;
-      })
-      .join("");
+    var today = new Date();
+    var date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+    var time =
+      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var dateTime = date + " " + time;
+
+    console.log(dateTime);
     let productName = titleText;
     knex
       .select("*")
@@ -46,7 +49,8 @@ router.post("/", function (req, res, next) {
           .insert({
             url: req.body.url,
             productname: productName,
-            itemprice: price,
+            itemprice: newPrice[1],
+            some_datetime: dateTime,
           })
           .into("Amazon")
       )

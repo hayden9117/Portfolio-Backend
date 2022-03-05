@@ -11,6 +11,10 @@ var getList = require("./routes/getlist");
 var deleteList = require("./routes/deletelist");
 var AmazonData = require("./routes/AmazonData");
 var getAmazonData = require("./routes/getAmazonData");
+var updateAmazonData = require("./routes/updateAmazonData");
+var updateUser = require("./routes/updateUser");
+var addProductWeek = require("./routes/addProductWeek");
+var getProductWeek = require("./routes/getProductWeek");
 require("dotenv").config();
 
 // SERVER
@@ -18,6 +22,8 @@ app.listen(port, () => {
   console.log(`Listening, localhost:${port}`);
 });
 
+setInterval(updateAmazonData, 1000 * 60 * 60);
+setInterval(addProductWeek, 1000 * 60 * 60 * 24);
 // Middleware
 // app.use(cors({ origin: '', credentials: true }))
 app.use(cors({ origin: "http://localhost:3002", credentials: true }));
@@ -29,6 +35,8 @@ app.use("/getlist", getList);
 app.use("/deletelist", deleteList);
 app.use("/AmazonData", AmazonData);
 app.use("/getAmazonData", getAmazonData);
+app.use("/getProductWeek", getProductWeek);
+app.use("/updateUser", updateUser);
 // Routes
 app.get("/", (req, res) => {
   res.send("heroku test server successful");
@@ -100,6 +108,23 @@ app.get("/amazonTest", function (req, res, next) {
   knex
     .select("*")
     .from("Amazon")
+    .orderBy("id")
+    .then((data) => res.status(200).json(data))
+    .catch((err) => {
+      res.status(404).json(
+        {
+          message: "not found",
+        },
+        console.log(err.message)
+      );
+    });
+});
+
+app.get("/amazonWeekTest", function (req, res, next) {
+  console.log("request records");
+  knex
+    .select("*")
+    .from("product_week")
     .orderBy("id")
     .then((data) => res.status(200).json(data))
     .catch((err) => {
