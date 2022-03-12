@@ -12,12 +12,12 @@ router.put("/", function (req, res, next) {
       username: req.body.username,
     })
     .where({ username: `${req.body.oldUserName}` })
-    .then(
+    .then((result) => {
       res.send({
-        token: "test123",
+        token: req.body.id,
         username: req.body.username,
-      })
-    )
+      });
+    })
     .catch((err) =>
       res.send({
         message: "error when trying to update user",

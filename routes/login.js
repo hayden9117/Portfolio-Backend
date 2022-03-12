@@ -17,10 +17,11 @@ router.post("/", async (req, res) => {
     .from("accounts")
     .where({ username: `${userName}` })
     .then((result) => {
+      console.log(result[0].id);
       if (result.length === 0) {
         res.send({ message: "No match found, create new user." });
       } else if (result[0].password === passWord) {
-        res.send({ token: "test123", username: userName });
+        res.send({ token: result[0].id, username: userName });
       } else {
         res.send({ message: "incorrect password" });
       }

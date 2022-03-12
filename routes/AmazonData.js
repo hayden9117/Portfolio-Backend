@@ -7,9 +7,9 @@ const fetch = require("node-fetch");
 router.post("/", function (req, res, next) {
   const getAmazon = async (url) => {
     // get html text from url
-    console.log(url);
+
     let urlToScrape = new URL(url);
-    console.log(urlToScrape + " url to scrape");
+
     const response = await fetch(urlToScrape);
     // using await to ensure that the promise resolves
     const body = await response.text();
@@ -25,7 +25,6 @@ router.post("/", function (req, res, next) {
 
     const titleNode = $(".a-size-large");
     const titleText = titleNode.text();
-    console.log(titleText);
 
     var today = new Date();
     var date =
@@ -38,7 +37,6 @@ router.post("/", function (req, res, next) {
       today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     var dateTime = date + " " + time;
 
-    console.log(dateTime);
     let productName = titleText;
     knex
       .select("*")
@@ -48,6 +46,7 @@ router.post("/", function (req, res, next) {
         knex
           .insert({
             url: req.body.url,
+            userID: req.body.userID,
             productname: productName,
             itemprice: newPrice[1],
             some_datetime: dateTime,

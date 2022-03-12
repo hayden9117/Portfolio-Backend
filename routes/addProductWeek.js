@@ -53,6 +53,7 @@ const addProductWeek = () => {
             knex
               .insert({
                 url: result.url,
+                userID: result.userID,
                 productname: productName,
                 itemprice: newPrice[1],
                 some_datetime: dateTime,

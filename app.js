@@ -23,7 +23,7 @@ app.listen(port, () => {
 });
 
 setInterval(updateAmazonData, 1000 * 60 * 60);
-setInterval(addProductWeek, 1000 * 60 * 60 * 24);
+setInterval(addProductWeek, 1000 * 60 * 120);
 // Middleware
 // app.use(cors({ origin: '', credentials: true }))
 app.use(cors({ origin: "http://localhost:3002", credentials: true }));
