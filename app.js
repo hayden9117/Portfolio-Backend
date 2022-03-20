@@ -1,8 +1,8 @@
 const express = require("express");
-const knex = require("knex")(require("./knexfile.js")["development"]);
+const knex = require("knex")(require("./knexfile.js")["production"]);
 const app = express();
 const port = process.env.PORT || 3001;
-// const db = require('./db')
+// const db = require("./db");
 const cors = require("cors");
 var users = require("./routes/users");
 var login = require("./routes/login");
