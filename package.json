@@ -1,8 +1,9 @@
 {
-  "name": "my-favorites",
+  "name": "portfolio-backend",
   "version": "0.0.0",
   "main": "index.js",
   "scripts": {
+    "start:knex": "npx knex migrate:rollback && npx knex migrate:latest",
     "start": "npm run start:knex && node app.js"
   },
   "dependencies": {
