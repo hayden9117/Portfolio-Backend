@@ -1,7 +1,11 @@
 {
   "name": "portfolio-backend",
   "version": "0.0.0",
-  "main": "index.js",
+  "engines": {
+    "node": "14.16.1"
+  },
+  "private": "true",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js"
 },
@@ -18,8 +22,6 @@
     "morgan": "~1.9.1",
     "node-fetch": "^2.6.1",
     "pg": "^8.7.1"
-  },
-  "engines": {
-    "node": "14.16.1"
   }
+
 }
