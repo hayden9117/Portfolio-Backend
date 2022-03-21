@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-knex = require("knex")(require("../knexfile.js")["development"]);
+knex = require("knex")(require("../knexfile.js")["production"]);
 // router.use(cors());
 
 // router.get('/', (req, res) => {
