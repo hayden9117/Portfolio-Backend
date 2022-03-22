@@ -31,7 +31,10 @@ module.exports = {
       connectionString,
       ssl: { rejectUnauthorized: false },
     },
+    pool: {
+      min: 2,
+      max: 10,
+    },
     migrations: { directory: "./migrations" },
-    seeds: { directory: "./seeds" },
   },
 };
