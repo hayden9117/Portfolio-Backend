@@ -1,9 +1,6 @@
 {
   "name": "portfolio-backend",
   "version": "0.0.0",
-  "engines": {
-    "node": "14.16.1"
-  },
   "private": "true",
   "scripts": {
     "start:knex": "npx knex migrate:latest",
@@ -22,6 +19,9 @@
     "morgan": "~1.9.1",
     "node-fetch": "^2.6.1",
     "pg": "^8.7.1"
+  },
+  "engines": {
+    "node": "14.16.1"
   }
 
 }
