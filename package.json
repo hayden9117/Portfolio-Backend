@@ -4,7 +4,9 @@
   "private": "true",
   "scripts": {
     "start:knex": "npx knex migrate:latest",
-    "start": "node index.js"
+    "start": "node index.js",
+    "heroku-prebuild": "npm install express",
+    "heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production;"
 },
   "dependencies": {
     "cheerio": "^1.0.0-rc.10",
@@ -21,7 +23,8 @@
     "pg": "^8.7.1"
   },
   "engines": {
-    "node": "14.x"
+    "node": "14.16.1",
+    "npm": "8.5.0"
   }
 
 }
