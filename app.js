@@ -1,7 +1,7 @@
 const express = require("express");
-const knex = require("knex")(require("./knexfile.js")["production"]);
+// const knex = require("knex")(require("./knexfile.js")["production"]);
 const app = express();
-const PORT = process.env.PORT || 3001;
+// const PORT = process.env.PORT || 3001;
 // const db = require("./db");
 const cors = require("cors");
 var users = require("./routes/users");
@@ -15,12 +15,12 @@ var updateAmazonData = require("./routes/updateAmazonData");
 var updateUser = require("./routes/updateUser");
 var addProductWeek = require("./routes/addProductWeek");
 var getProductWeek = require("./routes/getProductWeek");
-require("dotenv").config();
+// require("dotenv").config();
 
 // SERVER
-app.listen(PORT || 3001, () => {
-  console.log("running");
-});
+// app.listen(PORT || 3001, () => {
+//   console.log("running");
+// });
 
 setInterval(updateAmazonData, 1000 * 60 * 60);
 setInterval(addProductWeek, 1000 * 60 * 120);
@@ -200,3 +200,4 @@ app.get("/amazonWeekTest", function (req, res, next) {
 //       })
 //     })
 // })
+module.exports = app;
