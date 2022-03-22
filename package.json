@@ -4,7 +4,9 @@
   "private": "true",
   "scripts": {
     "start:knex": "npx knex migrate:latest",
-    "start": "node index.js"
+    "start": "node index.js",
+    "heroku-prebuild": "export NPM_CONFIG_PRODUCTION=false; export NODE_ENV=; NPM_CONFIG_PRODUCTION=false NODE_ENV=development npm install --only=dev --dev",
+    "heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production;"
 },
   "dependencies": {
     "cheerio": "^1.0.0-rc.10",
