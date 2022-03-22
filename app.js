@@ -1,7 +1,7 @@
 const express = require("express");
 const knex = require("knex")(require("./knexfile.js")["production"]);
 const app = express();
-const port = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
 // const db = require("./db");
 const cors = require("cors");
 var users = require("./routes/users");
@@ -18,7 +18,7 @@ var getProductWeek = require("./routes/getProductWeek");
 require("dotenv").config();
 
 // SERVER
-app.listen(process.env.PORT || 3001, () => {
+app.listen(PORT || 3001, () => {
   console.log("running");
 });
 
