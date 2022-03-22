@@ -1,6 +1,10 @@
+require("dotenv").config();
 var express = require("express");
 var router = express.Router();
-const knex = require("knex")(require("../knexfile.js")["production"]);
+
+const knex = require("knex")(
+  require("../knexfile.js")["development" || "production"]
+);
 
 /* GET users listing. */
 router.post("/", function (req, res, next) {
