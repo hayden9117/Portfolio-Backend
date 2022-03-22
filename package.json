@@ -8,7 +8,7 @@
   "main": "app.js",
   "scripts": {
     "start:knex": "npx knex migrate:latest",
-    "start": "npm run start:knex && node app.js"
+    "start": "npm start"
 },
   "dependencies": {
     "cheerio": "^1.0.0-rc.10",
