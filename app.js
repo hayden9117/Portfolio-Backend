@@ -18,8 +18,8 @@ var getProductWeek = require("./routes/getProductWeek");
 require("dotenv").config();
 
 // SERVER
-app.listen(port, () => {
-  console.log(`Listening, localhost:${port}`);
+app.listen(process.env.PORT || 3001, () => {
+  console.log("running");
 });
 
 setInterval(updateAmazonData, 1000 * 60 * 60);
