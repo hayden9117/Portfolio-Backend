@@ -1,6 +1,6 @@
 const path = require("path");
 const express = require("express");
-// const knex = require("knex")(require("./knexfile.js")["production"]);
+const knex = require("knex")(require("./knexfile.js")["production"]);
 const app = express();
 // const PORT = process.env.PORT || 3001;
 // const db = require("./db");
