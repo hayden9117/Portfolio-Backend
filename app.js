@@ -26,7 +26,12 @@ setInterval(updateAmazonData, 1000 * 60 * 60);
 setInterval(addProductWeek, 1000 * 60 * 120);
 // Middleware
 // app.use(cors({ origin: '', credentials: true }))
-app.use(cors({ origin: "http://localhost:3002", credentials: true }));
+app.use(
+  cors({
+    origin: "https://richiehayden-portfolio-fronten.herokuapp.com/",
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use("/newuser", users);
 app.use("/login", login);
