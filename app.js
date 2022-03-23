@@ -22,9 +22,6 @@ app.set("view engine", "jade");
 //   console.log("running");
 // });
 
-app.get("*", (request, response) => {
-  response.sendFile(path.join(__dirname, "client/build", "index.html"));
-});
 setInterval(updateAmazonData, 1000 * 60 * 60);
 setInterval(addProductWeek, 1000 * 60 * 120);
 // Middleware
