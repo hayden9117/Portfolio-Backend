@@ -19,7 +19,12 @@ var getProductWeek = require("./routes/getProductWeek");
 // app.listen(PORT || 3001, () => {
 //   console.log("running");
 // });
-
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+app.get("*", (request, response) => {
+  response.sendFile(path.join(__dirname, "client/build", "index.html"));
+});
 setInterval(updateAmazonData, 1000 * 60 * 60);
 setInterval(addProductWeek, 1000 * 60 * 120);
 // Middleware
