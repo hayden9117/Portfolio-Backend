@@ -15,7 +15,8 @@ var updateUser = require("./routes/updateUser");
 var addProductWeek = require("./routes/addProductWeek");
 var getProductWeek = require("./routes/getProductWeek");
 // require("dotenv").config();
-
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "jade");
 // SERVER
 // app.listen(PORT || 3001, () => {
 //   console.log("running");
@@ -45,9 +46,9 @@ app.use("/getAmazonData", getAmazonData);
 app.use("/getProductWeek", getProductWeek);
 app.use("/updateUser", updateUser);
 // Routes
-// app.get("/", (req, res) => {
-//   res.send("heroku test server successful");
-// });
+app.get("/", (req, res) => {
+  res.send("heroku test server successful");
+});
 
 // docker run --rm --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v ~/docker/volumes/postgres:/var/lib/postgresql/data postgres
 
