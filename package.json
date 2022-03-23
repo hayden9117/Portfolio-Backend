@@ -7,7 +7,7 @@
     "start": "node index.js && npm run start:knex",
     "heroku-prebuild": "npm install express",
     "heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production;"
-},
+  },
   "dependencies": {
     "cheerio": "^1.0.0-rc.10",
     "cookie-parser": "~1.4.4",
@@ -19,12 +19,10 @@
     "jade": "~1.11.0",
     "knex": "^0.95.11",
     "morgan": "~1.9.1",
-    "node-fetch": "^2.6.1",
-    "pg": "^8.7.1"
+    "node-fetch": "^2.6.1"
   },
   "engines": {
     "node": "14.16.1",
     "npm": "8.5.0"
   }
-
 }
