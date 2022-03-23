@@ -66,7 +66,9 @@ router.post("/", function (req, res, next) {
       });
   };
 
-  getAmazon(req.body.url);
+  getAmazon(req.body.url).catch(function (err) {
+    console.log(err); // Prints "Error: something went terribly wrong"
+  });
 
   console.log("request records");
 });
