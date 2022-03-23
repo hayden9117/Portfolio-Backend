@@ -28,7 +28,7 @@ setInterval(addProductWeek, 1000 * 60 * 120);
 // app.use(cors({ origin: '', credentials: true }))
 app.use(
   cors({
-    origin: "https://richiehayden-portfolio-fronten.herokuapp.com/",
+    origin: "https://richiehayden-portfolio-fronten.herokuapp.com/priceTracker",
     credentials: true,
   })
 );
