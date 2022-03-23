@@ -1,5 +1,5 @@
 // Update with your config settings.
-
+const connectionString = process.env.HEROKU_POSTGRESQL_IVORY_URL;
 module.exports = {
   development: {
     client: "pg",
@@ -9,14 +9,16 @@ module.exports = {
   },
   production: {
     client: "pg",
-    connection: process.env.HEROKU_POSTGRESQL_IVORY_URL,
+    connection: {
+      connectionString,
+      ssl: { rejectUnauthorized: false },
+    },
     pool: {
       min: 2,
       max: 10,
     },
     migrations: {
-      tablename: "knex_migrations",
-      directory: "./migrations",
+      migrations: { directory: "./migrations" },
     },
   },
 };
