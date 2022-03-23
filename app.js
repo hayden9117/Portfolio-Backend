@@ -6,7 +6,7 @@ const app = express();
 const cors = require("cors");
 var users = require("./routes/users");
 var login = require("./routes/login");
-var addList = require("./routes/addlist");
+
 var getList = require("./routes/getlist");
 var deleteList = require("./routes/deletelist");
 var AmazonData = require("./routes/AmazonData");
@@ -35,7 +35,7 @@ app.use(
 app.use(express.json());
 app.use("/newuser", users);
 app.use("/login", login);
-app.use("/addlist", addList);
+
 app.use("/getlist", getList);
 app.use("/deletelist", deleteList);
 app.use("/AmazonData", AmazonData);
