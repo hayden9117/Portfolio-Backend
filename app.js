@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 // const knex = require("knex")(require("./knexfile.js")["production"]);
 const app = express();
