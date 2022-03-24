@@ -43,6 +43,7 @@ const corsOptions = {
       callback(new Error("Not allowed by CORS"));
     }
   },
+  Credential: true,
 };
 
 app.use(cors(corsOptions));
