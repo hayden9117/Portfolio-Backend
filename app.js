@@ -26,15 +26,25 @@ setInterval(updateAmazonData, 1000 * 60 * 60);
 setInterval(addProductWeek, 1000 * 60 * 120);
 // Middleware
 // app.use(cors({ origin: '', credentials: true }))
-const domainsFromEnv = process.env.CORS_DOMAINS || "";
 
-const whitelist = domainsFromEnv.split(",").map((item) => item.trim());
-
+const whitelist = [
+  "http://localhost:3000",
+  "http://localhost:8080",
+  "https://richiehayden-portfolio-fronten.herokuapp.com",
+];
 const corsOptions = {
-  origin: "*",
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true,
+  origin: function (origin, callback) {
+    console.log("** Origin of request " + origin);
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      console.log("Origin acceptable");
+      callback(null, true);
+    } else {
+      console.log("Origin rejected");
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
 };
+
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/newuser", users);
