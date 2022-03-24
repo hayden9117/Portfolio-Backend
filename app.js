@@ -26,12 +26,12 @@ setInterval(updateAmazonData, 1000 * 60 * 60);
 setInterval(addProductWeek, 1000 * 60 * 120);
 // Middleware
 // app.use(cors({ origin: '', credentials: true }))
-app.use(
-  cors({
-    origin: "https://richiehayden-portfolio-fronten.herokuapp.com/priceTracker",
-    credentials: true,
-  })
-);
+var corsOptions = {
+  origin: '"https://richiehayden-portfolio-fronten.herokuapp.com/priceTracker"',
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/newuser", users);
 app.use("/login", login);
