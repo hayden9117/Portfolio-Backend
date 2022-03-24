@@ -28,7 +28,7 @@ setInterval(addProductWeek, 1000 * 60 * 120);
 // app.use(cors({ origin: '', credentials: true }))
 
 const whitelist = [
-  "http://localhost:3000",
+  "http://localhost:3001",
   "http://localhost:8080",
   "https://richiehayden-portfolio-fronten.herokuapp.com",
 ];
