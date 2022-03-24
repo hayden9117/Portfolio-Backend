@@ -27,7 +27,7 @@ setInterval(addProductWeek, 1000 * 60 * 120);
 // Middleware
 // app.use(cors({ origin: '', credentials: true }))
 var corsOptions = {
-  origin: '"https://richiehayden-portfolio-fronten.herokuapp.com/priceTracker"',
+  origin: "https://richiehayden-portfolio-fronten.herokuapp.com",
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
