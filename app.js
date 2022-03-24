@@ -26,11 +26,20 @@ setInterval(updateAmazonData, 1000 * 60 * 60);
 setInterval(addProductWeek, 1000 * 60 * 120);
 // Middleware
 // app.use(cors({ origin: '', credentials: true }))
-var corsOptions = {
-  origin: "https://richiehayden-portfolio-fronten.herokuapp.com",
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
+const domainsFromEnv = process.env.CORS_DOMAINS || "";
 
+const whitelist = domainsFromEnv.split(",").map((item) => item.trim());
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+};
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/newuser", users);
