@@ -25,28 +25,33 @@ app.set("view engine", "jade");
 setInterval(updateAmazonData, 1000 * 60 * 60);
 setInterval(addProductWeek, 1000 * 60 * 120);
 // Middleware
-// app.use(cors({ origin: '', credentials: true }))
+app.use(
+  cors({
+    origin: "https://richiehayden-portfolio-fronten.herokuapp.com",
+    credentials: true,
+  })
+);
 
-const whitelist = [
-  "http://localhost:3001",
-  "http://localhost:8080",
-  "https://richiehayden-portfolio-fronten.herokuapp.com",
-];
-const corsOptions = {
-  origin: function (origin, callback) {
-    console.log("** Origin of request " + origin);
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      console.log("Origin acceptable");
-      callback(null, true);
-    } else {
-      console.log("Origin rejected");
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  Credential: true,
-};
+// const whitelist = [
+//   "http://localhost:3001",
+//   "http://localhost:8080",
+//   "https://richiehayden-portfolio-fronten.herokuapp.com",
+// ];
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     console.log("** Origin of request " + origin);
+//     if (whitelist.indexOf(origin) !== -1 || !origin) {
+//       console.log("Origin acceptable");
+//       callback(null, true);
+//     } else {
+//       console.log("Origin rejected");
+//       callback(new Error("Not allowed by CORS"));
+//     }
+//   },
+//   Credential: true,
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/newuser", users);
 app.use("/login", login);
