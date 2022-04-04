@@ -14,7 +14,7 @@ var updateAmazonData = require("./routes/updateAmazonData");
 var updateUser = require("./routes/updateUser");
 var addProductWeek = require("./routes/addProductWeek");
 var getProductWeek = require("./routes/getProductWeek");
-const { port } = require("pg/lib/defaults");
+// const { port } = require("pg/lib/defaults");
 // require("dotenv").config();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
