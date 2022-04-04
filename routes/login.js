@@ -3,9 +3,9 @@ var express = require("express");
 var router = express.Router();
 const dbEngine = process.env.DB_ENVIRONMENT || "development";
 const config = require("../knexfile")[dbEngine];
-const knex = require("knex")(require("../knexfile.js")[dbEngine]);
+const knex = require("knex")(require("../knexfile.js")["production"]);
 // router.use(cors());
-
+console.log(process.env.DB_ENVIRONMENT);
 // router.get('/', (req, res) => {
 //     res.send({
 //         token: 'test123'
