@@ -27,6 +27,7 @@ app.use(
   cors({
     origin: "https://www.haydenportfol.io/",
     credentials: true,
+    optionsSuccessStatus: 200,
   })
 );
 // app.listen(port, () => {
