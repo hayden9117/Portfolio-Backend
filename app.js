@@ -25,7 +25,9 @@ setInterval(addProductWeek, 1000 * 60 * 120);
 // Middleware
 app.use(
   cors({
-    origin: "https://www.haydenportfol.io/",
+    origin:
+      "https://www.haydenportfol.io/" ||
+      "https://richiehayden-portfolio-fronten.herokuapp.com/",
     credentials: true,
   })
 );
