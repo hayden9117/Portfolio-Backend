@@ -26,7 +26,6 @@ setInterval(addProductWeek, 1000 * 60 * 120);
 app.use(
   cors({
     origin: "https://www.haydenportfol.io/",
-    credentials: true,
   })
 );
 // app.listen(port, () => {
