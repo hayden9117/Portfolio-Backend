@@ -3,7 +3,7 @@ var express = require("express");
 var router = express.Router();
 const dbEngine = process.env.DB_ENVIRONMENT || "development";
 const config = require("../knexfile")[dbEngine];
-const knex = require("knex")(require("../knexfile.js")["production"]);
+const knex = require("knex")(require("../knexfile.js")[dbEngine]);
 const cheerio = require("cheerio");
 const fetch = require("node-fetch");
 
