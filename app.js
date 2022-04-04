@@ -29,9 +29,9 @@ app.use(
     credentials: true,
   })
 );
-app.listen(port, () => {
-  console.log("running");
-});
+// app.listen(port, () => {
+//   console.log("running");
+// });
 // const whitelist = [
 //   "http://localhost:3001",
 //   "http://localhost:8080",
