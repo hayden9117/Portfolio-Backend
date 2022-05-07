@@ -8,7 +8,7 @@ const knex = require("knex")(require("../knexfile.js")["production"]);
 router.get("/", function (req, res, next) {
   knex
     .select("*")
-    .from("Amazon")
+    .from("product_week")
     .orderBy("id")
     .then((data) => res.status(200).json(data))
     .catch((err) => {
