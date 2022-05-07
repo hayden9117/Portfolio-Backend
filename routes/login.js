@@ -1,11 +1,11 @@
 require("dotenv").config();
 var express = require("express");
 var router = express.Router();
-const dbEngine = process.env.DB_ENVIRONMENT || "development";
-const config = require("../knexfile")[dbEngine];
+// const dbEngine = process.env.DB_ENVIRONMENT || "development";
+// const config = require("../knexfile")[dbEngine];
 const knex = require("knex")(require("../knexfile.js")["production"]);
 // router.use(cors());
-console.log(process.env.DB_ENVIRONMENT);
+
 // router.get('/', (req, res) => {
 //     res.send({
 //         token: 'test123'
@@ -32,15 +32,11 @@ router.post("/", async (req, res) => {
     .then((data) => res.status(200).json(data))
     .catch(
       (err) =>
-        (err = res
-          .status(404)
-          .json({ message: "these are not the users you are looking for" }))
+        (err = res.status(404).json({
+          message: "these are not the users you are looking for" + err,
+        }))
     );
 
   // { username: 'username', password: 'password' }
-
-  console.log(
-    `user ${userName} pass ${passWord} result: $ ${result[0].password} `
-  );
 });
 module.exports = router;

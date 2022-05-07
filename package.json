@@ -4,6 +4,7 @@
   "main": "index.js",
   "private": "true",
   "scripts": {
+  
     "start:knex": "npx knex migrate:latest",
     "start": "node index.js && npm run start:knex",
     "heroku-prebuild": "npm install express",
