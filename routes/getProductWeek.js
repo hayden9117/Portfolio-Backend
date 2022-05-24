@@ -6,11 +6,7 @@ const config = require("../knexfile")[dbEngine];
 const knex = require("knex")(require("../knexfile.js")["production"]);
 
 router.post("/", function (req, res, next) {
-  const url = req.body.url;
   const userID = req.body.userID;
-
-  let productWeekObj = [];
-  var timeDataWeek = [];
 
   knex
     .select("*")
@@ -29,7 +25,6 @@ router.post("/", function (req, res, next) {
       knex
         .select("*")
         .from("product_week")
-        .where({ userID: userID })
         .then((timeData) => {
           userList.forEach((item) => {
             item.data = [
@@ -93,7 +88,6 @@ router.post("/", function (req, res, next) {
           return userList;
         })
         .then((data) => {
-          console.log(data);
           res.status(200).json(data);
         });
     })

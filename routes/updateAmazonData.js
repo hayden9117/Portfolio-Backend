@@ -15,7 +15,7 @@ const updateAmazonData = () => {
     .then(async (result) => {
       result.forEach(async (result) => {
         let urlToScrape = new URL(result.url);
-        console.log(urlToScrape + " url to scrape");
+
         const response = await fetch(urlToScrape);
         // using await to ensure that the promise resolves
         const body = await response.text();
@@ -28,7 +28,7 @@ const updateAmazonData = () => {
         const priceNode = $(priceSing);
         const priceText = priceNode.text();
         let newPrice = priceText.split("$");
-        console.log(newPrice[1]);
+
         const titleNode = $(".a-size-large");
         const titleText = titleNode.text();
         // const imgNode = $(".a-image-container");

@@ -2,7 +2,7 @@ require("dotenv").config();
 var express = require("express");
 var router = express.Router();
 const dbEngine = process.env.DB_ENVIRONMENT || "development";
-const config = require("../knexfile")[dbEngine];
+// const config = require("../knexfile")[dbEngine];
 const knex = require("knex")(require("../knexfile.js")["production"]);
 const cheerio = require("cheerio");
 const fetch = require("node-fetch");
@@ -15,7 +15,7 @@ const addProductWeek = () => {
     .then(async (result) => {
       result.forEach(async (result) => {
         let urlToScrape = new URL(result.url);
-        console.log(urlToScrape + " url to scrape");
+
         const response = await fetch(urlToScrape);
         // using await to ensure that the promise resolves
         const body = await response.text();
@@ -28,7 +28,7 @@ const addProductWeek = () => {
         const priceNode = $(priceSing);
         const priceText = priceNode.text();
         let newPrice = priceText.split("$");
-        console.log(newPrice[1]);
+
         const titleNode = $(".a-size-large");
 
         // const imgNode = $(".a-image-container");

@@ -5,20 +5,23 @@ var router = express.Router();
 // const config = require("../knexfile")[dbEngine];
 const knex = require("knex")(require("../knexfile.js")["production"]);
 
-router.get("/", function (req, res, next) {
+const avgProductWeek = () => {
+  var today = new Date();
+
   knex
     .select("*")
     .from("product_week")
-    .orderBy("id")
-    .then((data) => res.status(200).json(data))
-    .catch((err) => {
-      res.status(404).json(
-        {
-          message: "not found",
-        },
-        console.log(err.message)
-      );
+    .then((timeData) => {
+      timeData.forEach((item) => {
+        var itemDate = new Date(item.some_datetime.slice(0, 11));
+      });
+    })
+    .then((data) => {
+      data.status(200).json(data);
+    })
+    .catch((data) => {
+      console.log(data);
     });
-});
+};
 
 module.exports = router;
