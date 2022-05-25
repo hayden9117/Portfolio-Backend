@@ -12,9 +12,7 @@ const avgProductWeek = () => {
     .select("*")
     .from("product_week")
     .then((timeData) => {
-      timeData.forEach((item) => {
-        var itemDate = new Date(item.some_datetime.slice(0, 11));
-      });
+      timeData.forEach((item) => {});
     })
     .then((data) => {
       data.status(200).json(data);
