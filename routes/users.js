@@ -27,7 +27,7 @@ router.post("/", function (req, res, next) {
         res.send({ message: "User Already Exists" });
       }
     })
-    .catch((err) => res.send({ message: "error when trying to add user" }));
+    .catch((_err) => res.send({ message: "error " + _err }));
 });
 
 module.exports = router;
