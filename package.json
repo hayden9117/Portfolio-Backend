@@ -7,7 +7,7 @@
   
     "start:knex": "npx knex migrate:latest",
     "start": "node index.js && npm run start:knex",
-    "heroku-prebuild": "npm install express",
+    "heroku-prebuild": "npm install express && npx knex migrate:latest",
     "heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production;"
   },
   "dependencies": {
