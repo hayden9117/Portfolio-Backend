@@ -73,9 +73,7 @@ router.post("/", function (req, res, next) {
         );
     })
     .catch((err) => {
-      res.status(404).json({
-        message: "not found",
-      });
+      res.send(err);
     });
 
   console.log("request records");

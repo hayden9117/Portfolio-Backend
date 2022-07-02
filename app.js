@@ -1,12 +1,16 @@
 const path = require("path");
 const express = require("express");
-const knex = require("knex")(require("./knexfile.js")["production"]);
+const knex = require("knex")(require("./knexfile.js")["development"]);
 const app = express();
+const multer = require("multer");
+const morgan = require("morgan");
 // const PORT = process.env.PORT || 3001;
 // const db = require("./db");
 const cors = require("cors");
 var users = require("./routes/users");
 var login = require("./routes/login");
+var viaSignUp = require("./routes/viaSignUp");
+var viaLogin = require("./routes/viaLogin");
 var deleteList = require("./routes/deleteList.js");
 var AmazonData = require("./routes/AmazonData");
 var getAmazonData = require("./routes/getAmazonData");
@@ -14,6 +18,9 @@ var updateAmazonData = require("./routes/updateAmazonData");
 var updateUser = require("./routes/updateUser");
 var addProductWeek = require("./routes/addProductWeek");
 var getProductWeek = require("./routes/getProductWeek");
+var uploadIMG = require("./routes/uploadIMG");
+var createPage = require("./routes/createPage");
+var feedback = require("./routes/Feedback");
 // const { port } = require("pg/lib/defaults");
 // require("dotenv").config();
 app.set("views", path.join(__dirname, "views"));
@@ -54,6 +61,9 @@ app.use(
 
 // app.use(cors(corsOptions));
 app.use(express.json());
+
+app.use(morgan("dev"));
+app.use("/uploads", express.static("uploads"));
 app.use("/newuser", users);
 app.use("/login", login);
 app.use("/deletelist", deleteList);
@@ -61,6 +71,11 @@ app.use("/AmazonData", AmazonData);
 app.use("/getAmazonData", getAmazonData);
 app.use("/getProductWeek", getProductWeek);
 app.use("/updateUser", updateUser);
+app.use("/uploadIMG", uploadIMG);
+app.use("/createPage", createPage);
+app.use("/viaSignUp", viaSignUp);
+app.use("/viaLogin", viaLogin);
+app.use("/Feedback", feedback);
 // Routes
 app.get("/", (req, res) => {
   res.send("heroku test server success");
@@ -72,7 +87,7 @@ app.get("/test", (req, res) => {
   console.log("request records");
   knex
     .select("*")
-    .from("accounts")
+    .from("links")
     .orderBy("id")
     .then((data) => res.status(200).json(data))
     .catch((err) => {
@@ -82,11 +97,11 @@ app.get("/test", (req, res) => {
     });
 });
 
-app.get("/testlist", (req, res) => {
+app.get("/testPage", (req, res) => {
   console.log("request records");
   knex
     .select("*")
-    .from("favoriteslist")
+    .from("viaPages")
     .orderBy("id")
     .then((data) => res.status(200).json(data))
     .catch((err) => {
