@@ -83,36 +83,36 @@ app.get("/", (req, res) => {
 
 // docker run --rm --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v ~/docker/volumes/postgres:/var/lib/postgresql/data postgres
 
-app.get("/test", (req, res) => {
-  console.log("request records");
-  knex
-    .select("*")
-    .from("links")
-    .orderBy("id")
-    .then((data) => res.status(200).json(data))
-    .catch((err) => {
-      res.status(404).json({
-        message: "not found",
-      });
-    });
-});
+// app.get("/test", (req, res) => {
+//   console.log("request records");
+//   knex
+//     .select("*")
+//     .from("links")
+//     .orderBy("id")
+//     .then((data) => res.status(200).json(data))
+//     .catch((err) => {
+//       res.status(404).json({
+//         message: "not found",
+//       });
+//     });
+// });
 
-app.get("/testPage", (req, res) => {
-  console.log("request records");
-  knex
-    .select("*")
-    .from("viaPages")
-    .orderBy("id")
-    .then((data) => res.status(200).json(data))
-    .catch((err) => {
-      res.status(404).json(
-        {
-          message: "not found",
-        },
-        console.log(err.message)
-      );
-    });
-});
+// app.get("/testPage", (req, res) => {
+//   console.log("request records");
+//   knex
+//     .select("*")
+//     .from("viaPages")
+//     .orderBy("id")
+//     .then((data) => res.status(200).json(data))
+//     .catch((err) => {
+//       res.status(404).json(
+//         {
+//           message: "not found",
+//         },
+//         console.log(err.message)
+//       );
+//     });
+// });
 /* GET users listing. */
 app.get("/amazonTest", function (req, res, next) {
   console.log("request records");
