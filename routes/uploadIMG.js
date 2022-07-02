@@ -8,7 +8,7 @@ router.use(morgan("dev"));
 const imageUpload = multer({
   dest: "images",
 });
-
+const knex = require("knex")(require("../knexfile.js")["production"]);
 // Image Upload Routes
 router.post("/image", imageUpload.single("image"), (req, res) => {
   const { filename, mimetype, size } = req.file;
