@@ -20,7 +20,7 @@ var addProductWeek = require("./routes/addProductWeek");
 var getProductWeek = require("./routes/getProductWeek");
 var uploadIMG = require("./routes/uploadIMG");
 var createPage = require("./routes/createPage");
-var feedback = require("./routes/Feedback");
+var feedback = require("./routes/FeedBack");
 // const { port } = require("pg/lib/defaults");
 // require("dotenv").config();
 app.set("views", path.join(__dirname, "views"));
